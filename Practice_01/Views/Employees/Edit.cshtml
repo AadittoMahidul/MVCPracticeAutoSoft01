@@ -1,0 +1,71 @@
+﻿@model Practice_01.Models.Employee
+@{
+    ViewBag.Title = "Edit";
+}
+
+<div class="row">
+    <div class="col-12">
+        <h3>Edit View</h3>
+        @using (Html.BeginForm())
+        {
+            @Html.HiddenFor(x => x.EmployeeId)
+
+            <div class="form-group row mb-1">
+                @Html.LabelFor(x => x.EmployeeName, new { @class = "col-form-label col-2" })
+                <div class="col-6">
+                    @Html.TextBoxFor(x => x.EmployeeName, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group row mb-1">
+                @Html.LabelFor(x => x.JoinDate, new { @class = "col-form-label col-2" })
+                <div class="col-6">
+                    @Html.TextBoxFor(x => x.JoinDate, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group row mb-1">
+                @Html.LabelFor(x => x.Department, new { @class = "col-form-label col-2" })
+                <div class="col-6">
+                    @Html.EnumDropDownListFor(x => x.Department, "Select one", new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group row mb-1">
+                @Html.LabelFor(x => x.Salary, new { @class = "col-form-label col-2" })
+                <div class="col-6">
+                    @Html.TextBoxFor(x => x.Salary, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group row mb-1">
+                @Html.LabelFor(x => x.IsContinue, new { @class = "col-form-label col-2" })
+                <div class="col-6">
+                    @Html.CheckBoxFor(x => x.IsContinue, new { @class = "form-check" })
+                </div>
+            </div>
+            <div class="form-group row mb-1">
+                <div class="col-6 offset-2">
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="col-12">
+        @Html.ActionLink("Back to list", "Index")
+    </div>
+</div>
+@section styles
+{
+    <link href="~/Content/bootstrap-datepicker.standalone.css" rel="stylesheet" />
+}
+@section scripts
+{
+    <script src="~/Scripts/jquery.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/bootstrap-datepicker.js"></script>
+    <script>
+        $("#JoinDate").datepicker({
+            formal: 'yyyy-mm-dd'
+        });
+    </script>
+}
+
+

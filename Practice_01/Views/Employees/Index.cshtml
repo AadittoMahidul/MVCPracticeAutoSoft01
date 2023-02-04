@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Practice_01.Models.Employee>
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row">
+    <div class="col-12">
+        <h2>Employees</h2>
+        <div class="d-flex justify-content-end mb-1">
+            <a href="@Url.Action("Create", "Employees")" class="btn btn-success"><i class="bi bi-plus"></i></a>
+        </div>
+        <table class="table table-bordered table-striped">
+            <thead class="table-light">
+                <tr>
+                    <th>@Html.DisplayNameFor(x => x.EmployeeName)</th>
+                    <th>@Html.DisplayNameFor(x => x.JoinDate)</th>
+                    <th>@Html.DisplayNameFor(x => x.Department)</th>
+                    <th>@Html.DisplayNameFor(x => x.Salary)</th>
+                    <th>@Html.DisplayNameFor(x => x.IsContinue)</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var m in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(x => m.EmployeeName)</td>
+                        <td>@Html.DisplayFor(x => m.JoinDate)</td>
+                        <td>@Html.DisplayFor(x => m.Department)</td>
+                        <td>@Html.DisplayFor(x => m.Salary)</td>
+                        <td>@Html.DisplayFor(x => m.IsContinue)</td>
+                        <td>
+                            <a href="@Url.Action("Edit", "Employees", new {id=m.EmployeeId})" class="btn btn-primary btn-sm"><i class="bi bi-pencil"></i></a>
+                            <a href="@Url.Action("Delete", "Employees", new {id=m.EmployeeId})" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+@section styles {
+    <link href="~/Content/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+}
+
